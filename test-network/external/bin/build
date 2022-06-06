@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#CHAINCODE_SOURCE_DIR="$1"
+#CHAINCODE_METADATA_DIR="$2"
+#BUILD_OUTPUT_DIR="$3"
+#
+## extract package path from metadata.json
+##GO_PACKAGE_PATH="$(jq -r .path "$CHAINCODE_METADATA_DIR/metadata.json")"
+#GO_PACKAGE_PATH="$(cat "$CHAINCODE_METADATA_DIR/metadata.json" | sed -e 's/[{}]/''/g' | awk -F"[,:}]" '{for(i=1;i<=NF;i++){if($i~/'path'\042/){print $(i+1)}}}' | tr -d '"')"
+#if [ -f "$CHAINCODE_SOURCE_DIR/src/go.mod" ]; then
+#    cd "$CHAINCODE_SOURCE_DIR/src"
+#    go build -v -mod=readonly -o "$BUILD_OUTPUT_DIR/chaincode" "$GO_PACKAGE_PATH"
+#else
+#    GO111MODULE=off go build -v  -o "$BUILD_OUTPUT_DIR/chaincode" "$GO_PACKAGE_PATH"
+#fi
+#
+## save statedb index metadata to provide at release
+#if [ -d "$CHAINCODE_SOURCE_DIR/META-INF" ]; then
+#    cp -a "$CHAINCODE_SOURCE_DIR/META-INF" "$BUILD_OUTPUT_DIR/"
+#fi
+
+
+set -euo pipefail
+
+SOURCE=$1
+OUTPUT=$3
+
+#external chaincodes expect connection.json file in the chaincode package
+if [ ! -f "$SOURCE/connection.json" ]; then
+    >&2 echo "$SOURCE/connection.json not found"
+    exit 1
+fi
+
+#simply copy the endpoint information to specified output location
+cp $SOURCE/connection.json $OUTPUT/connection.json
+
+if [ -d "$SOURCE/metadata" ]; then
+    cp -a $SOURCE/metadata $OUTPUT/metadata
+fi
+
+exit 0
