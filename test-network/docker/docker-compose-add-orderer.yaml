@@ -6,7 +6,7 @@
 version: '2'
 
 volumes:
-  orderer4.example.com:
+  orderer1.example.com:
 
 networks:
   test:
@@ -14,18 +14,18 @@ networks:
 
 services:
 
-  orderer4.example.com:
-    container_name: orderer4.example.com
+  orderer1.example.com:
+    container_name: orderer1.example.com
     image: hyperledger/fabric-orderer:latest
     environment:
       - FABRIC_LOGGING_SPEC=INFO
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
-      - ORDERER_GENERAL_LISTENPORT=7350
+      - ORDERER_GENERAL_LISTENPORT=7150
       - ORDERER_GENERAL_GENESISMETHOD=file
       - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
       - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
-      - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:17350
+      - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:17250
       # enabled TLS
       - ORDERER_GENERAL_TLS_ENABLED=true
       - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
@@ -40,11 +40,11 @@ services:
     command: orderer
     volumes:
         - ../channel-artifacts/latest_config.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
-        - ../organizations/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls
-        - orderer4.example.com:/var/hyperledger/production/orderer
+        - ../organizations/ordererOrganizations/example.com/orderers/orderer1.example.com/msp:/var/hyperledger/orderer/msp
+        - ../organizations/ordererOrganizations/example.com/orderers/orderer1.example.com/tls/:/var/hyperledger/orderer/tls
+        - orderer1.example.com:/var/hyperledger/production/orderer
     ports:
-      - 7350:7350
-      - 17350:17350
+      - 7150:7150
+      - 17150:17150
     networks:
       - test
