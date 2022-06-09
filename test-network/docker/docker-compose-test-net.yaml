@@ -148,7 +148,6 @@ services:
       - CORE_PEER_LOCALMSPID=Org1MSP
       - CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:17051
     volumes:
-      - ../../bin/peer-linux:/usr/local/bin/peer
       - ../external/core.yaml:/etc/hyperledger/fabric/core.yaml
       - ../external:/var/hyperledger/external
       - /var/run/docker.sock:/host/var/run/docker.sock
