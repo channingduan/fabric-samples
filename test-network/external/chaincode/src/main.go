@@ -1,11 +1,13 @@
 package main
 
+// 外部链码实例
 import (
 	"fmt"
-	"github.com/hyperledger/fabric-chaincode-go/shim"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
 	"os"
 	"strconv"
+
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
 )
 
 type SimpleChiancode struct {
@@ -51,6 +53,7 @@ func (s *SimpleChiancode) Read(ctx shim.ChaincodeStubInterface, id string) (stri
 
 func main() {
 	tls, _ := strconv.ParseBool(os.Getenv("TLS"))
+	// 将链码作为外部服务的关键
 	server := &shim.ChaincodeServer{
 		CCID:    os.Getenv("CHAINCODE_CCID"),
 		Address: os.Getenv("CHAINCODE_ADDRESS"),

@@ -1,0 +1,1 @@
+peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA} --channelID mychannel --name mycc --version 1.0 --init-required --package-id mycc:24cab3bd4bd55c87867ad396d88309bd102554eb30cc1d7e488a7d58c56bece0 --sequence 1 --waitForEvent

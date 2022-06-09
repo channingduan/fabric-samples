@@ -14,7 +14,7 @@ services:
     image: chaincode:latest
     container_name: org1.chaincode.com
     environment:
-      - CHAINCODE_CCID=extBasic_1.0:c23de061b25e66267c4afd4eaecaee9c4b63717050fb9bffd3a70915de49722c
+      - CHAINCODE_CCID=mycc:24cab3bd4bd55c87867ad396d88309bd102554eb30cc1d7e488a7d58c56bece0
       - CHAINCODE_ADDRESS=org1.chaincode.com:8080
       - TLS=true
     ports:

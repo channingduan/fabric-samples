@@ -9,5 +9,5 @@ export CORE_PEER_ADDRESS=localhost:9051
 # CA 证书
 export ORDERER_CA=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
-export ORG1_TLS_ROOT_CERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org1.example.com/tls/ca.crt
+export ORG1_TLS_ROOT_CERT_FILE=${PWD}/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
 export ORG2_TLS_ROOT_CERT_FILE=${PWD}/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
