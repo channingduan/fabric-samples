@@ -154,6 +154,7 @@ services:
       - ../organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
       - ../organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls:/etc/hyperledger/fabric/tls
       - peer0.org1.example.com:/var/hyperledger/production
+      # - /Volumes/data/project/golang/blockchain/hyperledger/fabric-gm/build/bin:/usr/local/bin
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:

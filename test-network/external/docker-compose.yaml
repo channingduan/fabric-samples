@@ -11,11 +11,11 @@ networks:
 
 services:
   chaincode_org1:
-    image: chaincode:latest
-    container_name: org1.chaincode.com
+    image: chaincode:1.2
+    container_name: poly.chaincode.com
     environment:
-      - CHAINCODE_CCID=mycc:24cab3bd4bd55c87867ad396d88309bd102554eb30cc1d7e488a7d58c56bece0
-      - CHAINCODE_ADDRESS=org1.chaincode.com:8080
+      - CHAINCODE_CCID=poly:4cde7faf7996d9524bfcb5f394a2a5b8b697732de31068c5a7027af33d9fd4b3
+      - CHAINCODE_ADDRESS=poly.chaincode.com:8080
       - TLS=true
     ports:
       - "8080:8080"

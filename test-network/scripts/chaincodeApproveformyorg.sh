@@ -1,1 +1,3 @@
-peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA} --channelID mychannel --name mycc --version 1.0 --init-required --package-id mycc:24cab3bd4bd55c87867ad396d88309bd102554eb30cc1d7e488a7d58c56bece0 --sequence 1 --waitForEvent
+#!/usr/bin/env sh
+
+peer lifecycle chaincode approveformyorg --tls true --cafile ${ORDERER_CA} --channelID mychannel1 --name ccm3 --version 1.0 --init-required --package-id ccm3_1.0:edf91a7969f49e4999277722418dc9ddadee433d21f1e6784506b7ca9519439f --sequence 1 --waitForEvent
