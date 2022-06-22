@@ -102,6 +102,22 @@ func (t *HelloPoly) get(stub shim.ChaincodeStubInterface, args []string) peer.Re
 	return shim.Success(bytes)
 }
 
+func (t *HelloPoly) getCross(stub shim.ChaincodeStubInterface, args []string) peer.Response {
+	if len(args) != 1 {
+		return shim.Error("Parameter error!!!")
+	}
+
+	bytes, err := stub.GetState(args[0])
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Get data error : %v", err))
+	}
+	res, err := hex.DecodeString(string(bytes))
+	if err != nil {
+		return shim.Error(fmt.Sprintf("decode data error : %v", err))
+	}
+	return shim.Success(res)
+}
+
 func packArgs(args []string) [][]byte {
 	var r [][]byte
 	for _, s := range args {
