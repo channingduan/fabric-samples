@@ -1,6 +1,6 @@
 .PHONY: build
 build:
-	docker build -f Dockerfile -t chaincode:1.2 .
+	docker build -f Dockerfile -t chaincode:latest .
 
 .PHONY: start
 start:

@@ -3,9 +3,10 @@ package hellopoly
 import (
 	"encoding/hex"
 	"fmt"
+	"time"
+
 	"github.com/hyperledger/fabric-chaincode-go/shim"
 	"github.com/hyperledger/fabric-protos-go/peer"
-	"time"
 )
 
 type HelloPoly struct {
@@ -61,7 +62,7 @@ func (t *HelloPoly) send(stub shim.ChaincodeStubInterface, args []string) peer.R
 		args[2],
 		hex.EncodeToString([]byte(args[3]))}
 	// Calling cross-chain management contract
-	var resp = stub.InvokeChaincode(string("ccm3"), packArgs(ccArgs), "")
+	var resp = stub.InvokeChaincode(string("ccm"), packArgs(ccArgs), "")
 	if resp.Status != shim.OK {
 		return shim.Error(fmt.Sprintf("Failed to call the cross-chain management contract %s: %s", "ccm", resp.Message))
 	}
