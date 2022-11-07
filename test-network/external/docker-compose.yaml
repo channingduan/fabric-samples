@@ -11,7 +11,7 @@ networks:
 
 services:
   chaincode_org1:
-    image: chaincode:latest
+    image: chaincode:0.1.1
     container_name: poly.chaincode.com
     environment:
       - CHAINCODE_CCID=poly:4cde7faf7996d9524bfcb5f394a2a5b8b697732de31068c5a7027af33d9fd4b3

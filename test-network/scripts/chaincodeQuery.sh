@@ -1,1 +1,1 @@
-peer chaincode query -C mychannel -n poly -c '{"Args":["Read","a1"]}'
+peer chaincode query -C mychannel -n poly -c '{"Args":["getMessage"]}'

@@ -22,6 +22,8 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"strconv"
+
 	"github.com/hyperledger/fabric-chaincode-go/pkg/cid"
 	"github.com/hyperledger/fabric-chaincode-go/shim"
 	"github.com/hyperledger/fabric-protos-go/peer"
@@ -32,7 +34,6 @@ import (
 	"github.com/polynetwork/poly/merkle"
 	pcomm "github.com/polynetwork/poly/native/service/cross_chain_manager/common"
 	"github.com/polynetwork/poly/native/service/header_sync/ont"
-	"strconv"
 )
 
 const (
@@ -465,6 +466,10 @@ func (manager *CrossChainManager) verifyHeaderAndExecuteTx(stub shim.ChaincodeSt
 	invokeArgs := make([][]byte, 2)
 	invokeArgs[0] = []byte(merkleValue.MakeTxParam.Method)
 	invokeArgs[1] = []byte(hex.EncodeToString(merkleValue.MakeTxParam.Args))
+	// name, err := hex.DecodeString(string(merkleValue.MakeTxParam.ToContractAddress))
+	// if err != nil {
+	// 	return shim.Error(fmt.Sprintf("chaincode not found, err: %v", err))
+	// }
 	resp := stub.InvokeChaincode(string(merkleValue.MakeTxParam.ToContractAddress), invokeArgs, "")
 	if resp.Status != shim.OK {
 		return shim.Error(fmt.Sprintf("failed to call DApp %s from (from_chainID: %d, from_contract: %s): %s",

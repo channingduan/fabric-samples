@@ -1,6 +1,6 @@
 .PHONY: build
 build:
-	docker build -f Dockerfile -t ccm:latest .
+	docker build -f Dockerfile -t ccm:0.1.1 .
 
 .PHONY: start
 start:

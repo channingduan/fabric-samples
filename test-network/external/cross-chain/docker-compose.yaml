@@ -11,7 +11,7 @@ networks:
 
 services:
   chaincode_org1:
-    image: ccm:latest
+    image: ccm:0.1.1
     container_name: ccm.chaincode.com
     environment:
       - CHAINCODE_CCID=ccm:9394ffa1c616986c7fbdec593dc7c8e986720a127036aa6df4233d2029bbc827

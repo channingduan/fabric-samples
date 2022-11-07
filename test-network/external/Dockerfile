@@ -4,10 +4,10 @@ ENV GOPROXY=https://goproxy.cn,direct
 ENV CGO_ENABLED=0
 
 WORKDIR /go/src
-ADD ./chaincode/hellopoly ./chaincode
+ADD ./chaincode/vonecross ./chaincode
 RUN cd ./chaincode \
 && go mod tidy \
-&& go build  -o /go/bin/chaincode ./cmd/main.go
+&& go build  -o /go/bin/chaincode ./main.go
 
 FROM alpine AS chaincode
 WORKDIR chaincode
